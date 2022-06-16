@@ -1,4 +1,4 @@
-# TodoList For SwiftUI
+# TodoList of SwiftUI
 
 ## Version
 - Xcode 13
