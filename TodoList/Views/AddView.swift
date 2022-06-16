@@ -10,6 +10,7 @@ struct AddView: View {
     @State var showAlert: Bool = false
     
     let myGray = Color(#colorLiteral(red: 0.9403803662, green: 0.9403803662, blue: 0.9403803662, alpha: 1))
+    let systemColor = Color(UIColor.secondarySystemBackground)
     
     var body: some View {
         ScrollView {
@@ -17,7 +18,7 @@ struct AddView: View {
                 TextField("할일을 적어주세요..", text: $textFieldText)
                     .padding(.horizontal)
                     .frame(height: 55)
-                    .background(myGray)
+                    .background(systemColor)
                     .cornerRadius(10)
                 
                 Button(action: saveButtonPressed
@@ -60,9 +61,18 @@ struct AddView: View {
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            AddView()
+        Group {
+            NavigationView {
+                AddView()
+            }
+            .preferredColorScheme(.light)
+            .environmentObject(ListViewModel())
+            NavigationView {
+                AddView()
+            }
+            .preferredColorScheme(.dark)
+            .environmentObject(ListViewModel())
         }
-        .environmentObject(ListViewModel())
+        
     }
 }

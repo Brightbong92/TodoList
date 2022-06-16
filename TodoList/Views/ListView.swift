@@ -9,7 +9,6 @@ struct ListView: View {
             if listViewModel.items.isEmpty {
                 NoItemsView()
                     .transition(AnyTransition.opacity.animation(.easeIn))
-                
             }else {
                 List {
                     ForEach(listViewModel.items) {item in
